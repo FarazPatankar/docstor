@@ -1,23 +1,16 @@
-var rubyScraper = function(rubyClass, rubyMethod) {
-	var url = `http://ruby-doc.org/core-2.3.0/${capitalize(rubyClass)}.html;`
+var helper = require('./helper.js')
+var request = require('request');
+var cheerio = require('cheerio');
 
-	request(url, function(error, response, html){
-		//Make sure there isn't an error
-		if (!error){
-			var $ = cheerio.load(html);
-			var container = ""
+module.exports = {
+    scraper: function(rubyClass, rubyMethod) {
+        var url = `http://ruby-doc.org/core-2.3.0/${helper.capitalize(rubyClass)}.html;`
 
-			$(`#${rubyMethod}-method pre .ruby`)
-		}
-	})
-	return url
+        request(url, function(error, response, html) {
+            //Make sure there isn't an error
+            if (!error) {
+            }
+        })
+
+    }
 }
-
-//-------------------------- Organizing code and stuff -----------------------------------------
-
-//Function that returns the capitalized form of the string
-function capitalize(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
-module.exports = rubyScraper
