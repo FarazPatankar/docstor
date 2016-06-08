@@ -9,7 +9,7 @@ router.post('/', function(req, res) {
     var text = req.body.text
 
     // Fetches user input from Postman
-    // var text = req.headers.text
+    //var text = req.headers.text
 
     // Set response to ephemeral or in_channel based on what the user wants
     var response_type;
@@ -27,7 +27,7 @@ router.post('/', function(req, res) {
     	var rubyMethod = formattedText[1];
 
         // Response from the scraper function
-        // console.log(rubyScraper.scraper(rubyClass, rubyMethod))
+        //console.log(rubyScraper.scraper(rubyClass, rubyMethod))
 
         res.json({
             "response_type": response_type,
