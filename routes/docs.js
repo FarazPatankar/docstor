@@ -26,7 +26,7 @@ router.post('/', function(req, res) {
 
         var formattedText = text.replace('?', '').replace('!', '-21').replace(' show', '').split('#');
         var rubyClass = formattedText[0];
-        var rubyMethod = formattedText[1];
+        var rubyMethod = formattedText[1].toLowerCase();
 
         // Response from callback is too late so we have to send a response in advance
         res.json({
@@ -34,7 +34,7 @@ router.post('/', function(req, res) {
             "text": "Wait for it..."
         });
         //
-        rubyScraper.scraper(rubyClass, rubyMethod, function(response) {
+        rubyScraper.scraper(rubyClass, rubyMethod, function(response, method) {
 
             // Format response such that it appears as a code snippet on slack
             response = helper.responseFormatter(response);
@@ -45,7 +45,7 @@ router.post('/', function(req, res) {
                     method: 'POST',
                     json: {
                         response_type: responseType,
-                        text: `Link : http://ruby-doc.org/core-2.2.0/${helper.capitalize(rubyClass)}.html#method-i-${rubyMethod.toLowerCase()}`,
+                        text: `Link : http://ruby-doc.org/core-2.2.0/${helper.capitalize(rubyClass)}.html#method-i-${method}`,
                         attachments: [{
                             text: "`" + response + "`", // response has to be between backticks to appear as a code block
                             mrkdwn_in: ["text"]
