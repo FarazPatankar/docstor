@@ -22,9 +22,9 @@ router.post('/', function(req, res) {
     }
 
     // Checks if the search is for Ruby Docs
-    if (text.match(/[a-zA-Z]+([#]|[:]{2})[a-zA-Z_]+/)) {
+    if (text.match(/[a-zA-Z]+([#]|[:]{2})[a-zA-Z_]+!?/)) {
 
-        var formattedText = text.replace('?', '').replace(' show', '').split('#');
+        var formattedText = text.replace('?', '').replace('!', '-21').replace(' show', '').split('#');
         var rubyClass = formattedText[0];
         var rubyMethod = formattedText[1];
 
@@ -64,7 +64,7 @@ router.post('/', function(req, res) {
 
     } else {
         res.json({
-            "response_type": "in_channel",
+            "response_type": "ephemeral",
             "text": "You're doing it wrong, check out the documentation here - LINKGOESHERE"
         });
     }

@@ -20,6 +20,3 @@ module.exports = {
 
     }
 }
-
-
-// Scrapper still not working for methods with "!". For example: map!
