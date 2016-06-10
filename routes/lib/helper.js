@@ -21,6 +21,6 @@ module.exports = {
         response = module.exports.reverseString(response);
         response = response.replace(/\n/g, "`\n`");
 
-        return response
+        return response;
     }
-}
+};
