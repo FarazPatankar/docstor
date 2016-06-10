@@ -35,12 +35,9 @@ router.post('/', function(req, res) {
         });
         //
         rubyScraper.scraper(rubyClass, rubyMethod, function(response) {
-            // Next 5 lines could/should be much cleaner
-            response = response.replace(/"/g,"'");
-            response = helper.reverseString(response);
-            response = response.replace("\n", "");
-            response = helper.reverseString(response);
-            response = response.replace(/\n/g, "`\n`");
+
+            // Format response such that it appears as a code snippet on slack
+            response = helper.responseFormatter(response)
 
             // Sending delayed response
             request({
