@@ -13,21 +13,22 @@ module.exports = {
                 var $ = cheerio.load(html);
 
                 var examples = $(`#${rubyMethod}-method`).find('pre').filter('.ruby').text();
-                    console.log("before", examples)
+                var methodSignature = $(`#${rubyMethod}-method`).find('.method-callseq').text();
 
                 if (examples === "") {
                     examples = $(`div[id*=${rubyMethod}]`).find('pre').filter('.ruby').text();
+                    methodSignature = $(`div[id*=${rubyMethod}]`).find('.method-callseq').text();
+
 
                     if (examples !== "") {
-                        console.log("after", examples)
                         var method = rubyMethod + "-3F"
-                        callback(examples, method);
+                        callback(examples, method, methodSignature);
                     } else {
                         examples = "Sorry, unfortunately this method has no examples :("
-                        callback(examples, rubyMethod)
+                        callback(examples, rubyMethod, methodSignature)
                     }
                 } else {
-                    callback(examples, rubyMethod)
+                    callback(examples, rubyMethod, methodSignature)
                 }
             }
         });

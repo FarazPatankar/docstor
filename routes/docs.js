@@ -34,37 +34,58 @@ router.post('/', function(req, res) {
             "text": "Wait for it..."
         });
         //
-        rubyScraper.scraper(rubyClass, rubyMethod, function(response, method) {
+        rubyScraper.scraper(rubyClass, rubyMethod, function(response, method, methodSignature) {
 
-            // Format response such that it appears as a code snippet on slack
-            response = helper.responseFormatter(response);
+            if (methodSignature !== "") {
+                var responseVariable = text.replace(' show', '').split('#');
 
-            // Sending delayed response
-            request({
-                    url: responseUrl, //URL to hit
-                    method: 'POST',
-                    json: {
-                        response_type: responseType,
-                        text: `Link : http://ruby-doc.org/core-2.2.0/${helper.capitalize(rubyClass)}.html#method-i-${method}`,
-                        attachments: [{
-                            text: "`" + response + "`", // response has to be between backticks to appear as a code block
-                            mrkdwn_in: ["text"]
-                        }],
-                        mrkdwn: true
-                    }
-                },
-                function(error, response, body) {
-                    if (error) {
-                        console.log(error);
-                    } else {
-                        console.log(response.statusCode, body);
-                    }
-                });
+                // Format response such that it appears as a code snippet on slack
+                response = helper.responseFormatter(response);
+
+                // Sending delayed response
+                request({
+                        url: responseUrl, //URL to hit
+                        method: 'POST',
+                        json: {
+                            response_type: responseType,
+                            text: `Class : \`${helper.capitalize(responseVariable[0])}\`, Method : \`${responseVariable[1]}\`\nMethod Signature : ${methodSignature}\nLink : http://ruby-doc.org/core-2.2.0/${helper.capitalize(rubyClass)}.html#method-i-${method}`,
+                            attachments: [{
+                                text: "`" + response + "`", // response has to be between backticks to appear as a code block
+                                mrkdwn_in: ["text"]
+                            }],
+                            mrkdwn: true
+                        }
+                    },
+                    function(error, response, body) {
+                        if (error) {
+                            console.log(error);
+                        } else {
+                            console.log(response.statusCode, body);
+                        }
+                    });
+            } else {
+                request({
+                        url: responseUrl, //URL to hit
+                        method: 'POST',
+                        json: {
+                            response_type: responseType,
+                            text: `Error : That method does not exist, you may want to check out the actual docs.\nLink : http://ruby-doc.org/core-2.2.0/${helper.capitalize(rubyClass)}.html`,
+                            mrkdwn: true
+                        }
+                    },
+                    function(error, response, body) {
+                        if (error) {
+                            console.log(error);
+                        } else {
+                            console.log(response.statusCode, body);
+                        }
+                    });
+            }
         });
 
     } else {
         res.json({
-            "response_type": "ephemeral",
+            "response_type": responseType,
             "text": "You're doing it wrong, check out the documentation here - LINKGOESHERE"
         });
     }
