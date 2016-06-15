@@ -1,4 +1,4 @@
-# docstor
+# Docstor
 
 A Slack bot that returns documentation.
 
