@@ -86,7 +86,7 @@ router.post('/', function(req, res) {
     } else {
         res.json({
             "response_type": responseType,
-            "text": "You're doing it wrong, check out the documentation here - LINKGOESHERE"
+            "text": "You're doing it wrong, check out the documentation here - http://docstor.herokuapp.com/"
         });
     }
 });
