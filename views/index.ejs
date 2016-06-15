@@ -10,12 +10,68 @@
 
 	<% include templates/navbar.ejs %>
 
-	<div id="usage" class="row">
+    <div class="index-banner">
+      <div class="container">
+        <div class="row">
+          <div class="col s12">
+            <h1 class="header">Using Docstor</h1>
+            <h4 class="header-description">Get to know the basics of your new assistant for fast and searchable Ruby documentation.</h4>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col s12">
+          <h3 class="content-header" id="usage">What is Docstor?</h3>
+          <p class="content" col s12>Docstor is bot for Slack to look for references that will come in handy when you feel like coding in Ruby.</p>
+        </div>
+        <div class="col s12">
+          <h3 class="content-header">Commands</h3>
+          <h4 class="request-type">Private request</h4>
+          <p class="content">To make a request visible <strong>only to you</strong>, use the following command:</p>
+          <pre class="language-bash">
+            <code class=" language-markup">
+              <span class="command-text">/docs Class#method</span>
+            </code>
+          </pre>
+          <p class="content">Replace <code class="language-markup"><span class="token operator">Class</span></code> and <code class="language-markup"><span class="token operator">method</span></code> with the name of the Class and Method you are searching for.</p>
+          <p class="content">Example:</p>
+          <pre class="language-bash">
+            <code class=" language-markup">
+              <span class="command-text">/docs String#reverse</span>
+            </code>
+          </pre>
+          <p class="content">This will return a message with a link to Ruby's oficial documentation on that method and an example of its usage. Just like this:</p>
+          <img src="/images/docstor-private.jpg">
+          <br>
+          <br>
+          <h4 class="request-type">Public request</h4>
+          <p class="content">To make a request visible <strong>to everyone in the channel</strong>, use the following command:</p>
+          <pre class="language-bash">
+            <code class=" language-markup">
+              <span class="command-text">/docs Class#method show</span>
+            </code>
+          </pre>
+          <p class="content">Replace <code class="language-markup"><span class="token operator">Class</span></code> and <code class="language-markup"><span class="token operator">method</span></code> with the name of the Class and Method you are searching for.</p>
+          <p class="content">Example:</p>
+          <pre class="language-bash">
+            <code class=" language-markup">
+              <span class="command-text">/docs String#upcase show</span>
+            </code>
+          </pre>
+          <p class="content">This will return a message with a link to Ruby's oficial documentation on that method and an example of its usage. Just like this:</p>
+          <img src="/images/docstor-public.jpg">
+        </div>
+        <div class="col s12">
+          <h3 class="content-header" id="contribute">Contribute</h3>
 
-	</div>
-
-	<div id="contributing">
-
-	</div>
+          <p class="content">If you would like to contribute to this project, please visit our <a href="https://github.com/FarazPatankar/docstor">Github profile</a> to download the repository.</p>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <p>Developed by Ironhackers</p>
+    </footer>
   </body>
 </html>

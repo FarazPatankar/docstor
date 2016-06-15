@@ -1,3 +1,67 @@
 nav {
 	padding: 0 20px;
 }
+
+nav .brand-logo {
+	color: #1eccc3;
+}
+
+nav ul a {
+	color: #1eccc3;
+	transition: all 200ms ease-in-out;
+}
+
+nav ul a:hover {
+	background-color: #18A39C;
+	color: #fff
+}
+
+.index-banner {
+	background-color: #1eccc3;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	color: #fff
+}
+
+.header-description {
+	font-weight: 100;
+}
+
+.content-header {
+	color: #1eccc3;
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+
+.content {
+	font-size: 1.25rem;
+    font-weight: 300;
+    margin-bottom: 30px;
+}
+
+.language-bash {
+	background: #f5f2f0;
+	border: solid 1px rgba(51,51,51,0.12);
+}
+
+.command-text {
+	font-size: 18px;
+}
+
+.request-type {
+	color: rgba(0,0,0,0.71);
+}
+
+img {
+	width: 600px;
+}
+
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  margin-left: 45px;
+  margin-right: 45px;
+  border-top: 1px solid #eaeaea;
+  color: #777;
+  text-align: center;
+}
